@@ -33,28 +33,28 @@ public class NumberSpeller {
         if (isOneDigitNumber(length)) {
             return getNumberName(number);
         }
-        if (isTensNumber(number, length)) {
+        if (isTennerNumber(number, length)) {
             return getNumberName(number);
         }
-        if (isTwoDigitNumberOverTwenty(number, length)) {
-            return getTwoDigitNumber(number);
+        if (isTennerOverTwenty(number, length)) {
+            return getTennerNumber(number);
     }
-        if (isThreeDigitNumber(length)) {
-            return getThreeDigitNumber(number);
+        if (isHundredsNumber(length)) {
+            return getHundredNumber(number);
         }
         throw new IllegalArgumentException("Number can not be spelled");
     }
 
-    private String getThreeDigitNumber(int number) {
+    private String getHundredNumber(int number) {
         if (number % 100 == 0) {
             return getNumberName(number);
         }
         int firstDigit = Integer.parseInt(Integer.toString(number).substring(0, 1));
         int lastTwoDigits = Integer.parseInt(Integer.toString(number).substring(1, 3));
-        return getNumberName(firstDigit * 100) + " and " + getTwoDigitNumber(lastTwoDigits);
+        return getNumberName(firstDigit * 100) + " and " + getTennerNumber(lastTwoDigits);
     }
 
-    private String getTwoDigitNumber(int number) {
+    private String getTennerNumber(int number) {
         if (number % 10 == 0) {
             return getNumberName(number);
         } else {
@@ -68,7 +68,7 @@ public class NumberSpeller {
         return numberNames.get(number);
     }
 
-    private boolean isTwoDigitNumberOverTwenty(int number, int length) {
+    private boolean isTennerOverTwenty(int number, int length) {
         return length == 2 && number >= 20;
     }
 
@@ -76,11 +76,11 @@ public class NumberSpeller {
         return length == 1;
     }
 
-    private boolean isThreeDigitNumber(int length) {
+    private boolean isHundredsNumber(int length) {
         return length == 3;
     }
 
-    private boolean isTensNumber(int number, int length) {
+    private boolean isTennerNumber(int number, int length) {
         return length == 2 && number < 20;
     }
 }
