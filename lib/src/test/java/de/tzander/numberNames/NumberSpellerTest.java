@@ -1,5 +1,6 @@
 package de.tzander.numberNames;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -60,6 +61,16 @@ class NumberSpellerTest {
         String spelledNumber = speller.spellNumber(324);
 
         assertEquals("three hundred twenty four", spelledNumber);
+    }
+
+    @Test
+    void throw_exception_if_number_not_spellable(){
+        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            var speller = new NumberSpeller();
+            String spelledNumber = speller.spellNumber(31232333);
+        });
+
+        Assertions.assertEquals("Number can not be spelled", thrown.getMessage());
     }
 
 }

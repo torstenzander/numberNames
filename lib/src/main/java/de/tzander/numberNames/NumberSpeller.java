@@ -1,16 +1,13 @@
 package de.tzander.numberNames;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class NumberSpeller {
 
-    HashMap numberNames = new HashMap();
+    private static final Map<Integer, String> numberNames = new HashMap<>();
 
-    public NumberSpeller() {
-        createNumberMap();
-    }
-
-    private void createNumberMap() {
+    static {
         numberNames.put(0, "zero");
         numberNames.put(1, "one");
         numberNames.put(2, "two");
@@ -33,31 +30,31 @@ public class NumberSpeller {
 
     public String spellNumber(int number) {
         int length = String.valueOf(number).length();
-        if (length == 1) {
+        if (isOneDigitNumber(length)) {
             return getNumberName(number);
         }
         if (isTensNumber(number, length)) {
             return getNumberName(number);
         }
         if (isTwoDigitNumberOverTwenty(number, length)) {
-            return get2DigitNumber(number);
+            return getTwoDigitNumber(number);
+    }
+        if (isThreeDigitNumber(length)) {
+            return getThreeDigitNumber(number);
         }
-        if (length == 3) {
-            return get3DigitNumber(number);
-        }
-        return "unknown number";
+        throw new IllegalArgumentException("Number can not be spelled");
     }
 
-    private String get3DigitNumber(int number) {
+    private String getThreeDigitNumber(int number) {
         if (number % 100 == 0) {
             return getNumberName(number);
         }
         int firstDigit = Integer.parseInt(Integer.toString(number).substring(0, 1));
         int lastTwoDigits = Integer.parseInt(Integer.toString(number).substring(1, 3));
-        return getNumberName(firstDigit * 100) + " " + get2DigitNumber(lastTwoDigits);
+        return getNumberName(firstDigit * 100) + " " + getTwoDigitNumber(lastTwoDigits);
     }
 
-    private String get2DigitNumber(int number) {
+    private String getTwoDigitNumber(int number) {
         if (number % 10 == 0) {
             return getNumberName(number);
         } else {
@@ -73,6 +70,14 @@ public class NumberSpeller {
 
     private boolean isTwoDigitNumberOverTwenty(int number, int length) {
         return length == 2 && number >= 20;
+    }
+
+    private boolean isOneDigitNumber(int length) {
+        return length == 1;
+    }
+
+    private boolean isThreeDigitNumber(int length) {
+        return length == 3;
     }
 
     private boolean isTensNumber(int number, int length) {
