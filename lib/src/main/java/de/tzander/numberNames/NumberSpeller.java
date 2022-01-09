@@ -65,7 +65,7 @@ public class NumberSpeller {
     }
 
     private String getNumberName(int number) {
-        return numberNames.get(number).toString();
+        return numberNames.get(number);
     }
 
     private boolean isTwoDigitNumberOverTwenty(int number, int length) {
