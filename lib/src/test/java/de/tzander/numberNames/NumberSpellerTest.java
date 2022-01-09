@@ -52,7 +52,7 @@ class NumberSpellerTest {
         var speller = new NumberSpeller();
         String spelledNumber = speller.spellNumber(250);
 
-        assertEquals("two hundred fifty", spelledNumber);
+        assertEquals("two hundred and fifty", spelledNumber);
     }
 
     @Test
@@ -60,7 +60,7 @@ class NumberSpellerTest {
         var speller = new NumberSpeller();
         String spelledNumber = speller.spellNumber(324);
 
-        assertEquals("three hundred twenty four", spelledNumber);
+        assertEquals("three hundred and twenty four", spelledNumber);
     }
 
     @Test

@@ -51,7 +51,7 @@ public class NumberSpeller {
         }
         int firstDigit = Integer.parseInt(Integer.toString(number).substring(0, 1));
         int lastTwoDigits = Integer.parseInt(Integer.toString(number).substring(1, 3));
-        return getNumberName(firstDigit * 100) + " " + getTwoDigitNumber(lastTwoDigits);
+        return getNumberName(firstDigit * 100) + " and " + getTwoDigitNumber(lastTwoDigits);
     }
 
     private String getTwoDigitNumber(int number) {
