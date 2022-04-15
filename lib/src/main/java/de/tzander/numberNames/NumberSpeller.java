@@ -49,19 +49,27 @@ public class NumberSpeller {
         if (number % 100 == 0) {
             return getNumberName(number);
         }
-        int firstDigit = Integer.parseInt(Integer.toString(number).substring(0, 1));
-        int lastTwoDigits = Integer.parseInt(Integer.toString(number).substring(1, 3));
-        return getNumberName(firstDigit * 100) + " and " + getTennerNumber(lastTwoDigits);
+        int lastTwoDigits = parseForSubstring(number, 1, 3);
+        return getNumberName(getFirstDigitFromNumber(number) * 100)
+                + " and " + getTennerNumber(lastTwoDigits);
+    }
+
+    private int parseForSubstring(int number, int beginIndex, int endIndex) {
+        return Integer.parseInt(Integer.toString(number).substring(beginIndex, endIndex));
     }
 
     private String getTennerNumber(int number) {
         if (number % 10 == 0) {
             return getNumberName(number);
         } else {
-            int firstDigit = Integer.parseInt(Integer.toString(number).substring(0, 1));
-            int secondDigit = Integer.parseInt(Integer.toString(number).substring(1, 2));
-            return getNumberName(firstDigit * 10) + " " + getNumberName(secondDigit);
+            int secondDigit = parseForSubstring(number, 1, 2);
+            return getNumberName(getFirstDigitFromNumber(number) * 10)
+                    + " " + getNumberName(secondDigit);
         }
+    }
+
+    private int getFirstDigitFromNumber(int number) {
+        return parseForSubstring(number, 0, 1);
     }
 
     private String getNumberName(int number) {
