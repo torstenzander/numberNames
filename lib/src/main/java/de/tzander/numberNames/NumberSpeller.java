@@ -28,20 +28,14 @@ public class NumberSpeller {
         numberNames.put(300, "three hundred");
     }
 
-    public String spellNumber(int number) {
+    public String spellNumber(int number) throws IllegalArgumentException {
         int length = String.valueOf(number).length();
-        if (isOneDigitNumber(length)) {
-            return getNumberName(number);
-        }
-        if (isTennerNumber(number, length)) {
-            return getNumberName(number);
-        }
-        if (isTennerOverTwenty(number, length)) {
-            return getTennerNumber(number);
-    }
-        if (isHundredsNumber(length)) {
-            return getHundredNumber(number);
-        }
+
+        if (isOneDigitNumber(length)) return getNumberName(number);
+        if (isTennerNumber(number, length)) return getNumberName(number);
+        if (isTennerOverTwenty(number, length)) return getTennerNumber(number);
+        if (isHundredsNumber(length)) return getHundredNumber(number);
+
         throw new IllegalArgumentException("Number can not be spelled");
     }
 
