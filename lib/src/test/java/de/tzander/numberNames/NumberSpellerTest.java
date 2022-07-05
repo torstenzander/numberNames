@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class NumberSpellerTest {
 
     @Test
-    void spell_out_one_digit_number(){
+    void shouldSpellOutOneDigitNumber(){
         var speller = new NumberSpeller();
         String spelledNumber = speller.spellNumber(3);
 
@@ -16,7 +16,7 @@ class NumberSpellerTest {
     }
 
     @Test
-    void spell_out_two_digit_number_under_twenty(){
+    void shouldSpellOutTwoDigitNumberUnderTwenty(){
         var speller = new NumberSpeller();
         String spelledNumber = speller.spellNumber(12);
 
@@ -24,7 +24,7 @@ class NumberSpellerTest {
     }
 
     @Test
-    void spell_out_two_digit_number_over_twenty_tens(){
+    void shouldSpellOutTwoDigitNumberOverTwentyTens(){
         var speller = new NumberSpeller();
         String spelledNumber = speller.spellNumber(30);
 
@@ -32,7 +32,7 @@ class NumberSpellerTest {
     }
 
     @Test
-    void spell_out_two_digit_number_over_twenty(){
+    void shouldSpellOutTwoDigitNumberOverTwenty(){
         var speller = new NumberSpeller();
         String spelledNumber = speller.spellNumber(53);
 
@@ -40,7 +40,7 @@ class NumberSpellerTest {
     }
 
     @Test
-    void spell_out_simple_three_digit_number(){
+    void shouldSpellOutSimpleThreeDdigitNumber(){
         var speller = new NumberSpeller();
         String spelledNumber = speller.spellNumber(200);
 
@@ -48,7 +48,7 @@ class NumberSpellerTest {
     }
 
     @Test
-    void spell_out_three_digit_number(){
+    void shouldSpellOutThreeDigitNumber(){
         var speller = new NumberSpeller();
         String spelledNumber = speller.spellNumber(250);
 
@@ -56,7 +56,7 @@ class NumberSpellerTest {
     }
 
     @Test
-    void spell_out_complex_three_digit_number(){
+    void shouldSpellOutComplexThreeDigitNumber(){
         var speller = new NumberSpeller();
         String spelledNumber = speller.spellNumber(324);
 
@@ -64,10 +64,10 @@ class NumberSpellerTest {
     }
 
     @Test
-    void throw_exception_if_number_not_spellable(){
+    void shouldThrowExceptionIfNumberNotSpellable(){
         IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             var speller = new NumberSpeller();
-            String spelledNumber = speller.spellNumber(31232333);
+            speller.spellNumber(31232333);
         });
 
         Assertions.assertEquals("Number can not be spelled", thrown.getMessage());

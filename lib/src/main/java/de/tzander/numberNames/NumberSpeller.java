@@ -57,7 +57,8 @@ public class NumberSpeller {
             return getNumberName(number);
         }
         int secondDigit = parseForSubstring(number, 1, 2);
-        return getNumberName(getFirstDigitFromNumber(number) * 10) + " " + getNumberName(secondDigit);
+        return getNumberName(getFirstDigitFromNumber(number) * 10)
+                + " " + getNumberName(secondDigit);
     }
 
     private int getFirstDigitFromNumber(int number) {
