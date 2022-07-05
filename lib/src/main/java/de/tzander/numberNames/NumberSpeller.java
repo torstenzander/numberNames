@@ -55,11 +55,9 @@ public class NumberSpeller {
     private String getTennerNumber(int number) {
         if (number % 10 == 0) {
             return getNumberName(number);
-        } else {
-            int secondDigit = parseForSubstring(number, 1, 2);
-            return getNumberName(getFirstDigitFromNumber(number) * 10)
-                    + " " + getNumberName(secondDigit);
         }
+        int secondDigit = parseForSubstring(number, 1, 2);
+        return getNumberName(getFirstDigitFromNumber(number) * 10) + " " + getNumberName(secondDigit);
     }
 
     private int getFirstDigitFromNumber(int number) {
